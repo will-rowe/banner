@@ -34,8 +34,7 @@ conda install banner
 #### Pip
 
 ```
-git clone https://github.com/will-rowe/banner && cd $_
-pip install -r requirements.txt .
+pip install banner
 ```
 
 ## Quick Start
