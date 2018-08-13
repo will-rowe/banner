@@ -2,9 +2,9 @@
     <img src="https://raw.githubusercontent.com/will-rowe/hulk/master/paper/img/misc/hulk-logo-with-text.png" alt="hulk-logo" width="250">
     <h3><a style="color:#9900FF">BANNER</a></h3>
     <hr>
-    <a href="https://travis-ci.org/will-rowe/hulk"><img src="https://travis-ci.org/will-rowe/hulk.svg?branch=master" alt="travis"></a>
-    <a href="https://github.com/will-rowe/hulk/blob/master/LICENSE"><img src="https://img.shields.io/badge/license-MIT-orange.svg" alt="License"></a>
-    <a href="https://zenodo.org/badge/latestdoi/143890875"><img src="https://zenodo.org/badge/143890875.svg" alt="DOI"></a>
+    <a href="https://travis-ci.org/will-rowe/banner"><img src="https://travis-ci.org/will-rowe/banner.svg?branch=master" alt="travis"></a>
+    <a href="https://github.com/will-rowe/master/blob/master/LICENSE"><img src="https://img.shields.io/badge/license-MIT-orange.svg" alt="License"></a>
+    <a href="https://zenodo.org/badge/latestdoi/144629592"><img src="https://zenodo.org/badge/144629592.svg" alt="DOI"></a>
 </div>
 
 ***
@@ -35,7 +35,7 @@ conda install banner
 
 ```
 git clone https://github.com/will-rowe/banner && cd $_
-pip install .
+pip install -r requirements.txt .
 ```
 
 ## Quick Start
@@ -55,6 +55,4 @@ hulk sketch -f mystery-sample.fastq --stream -p 8 | banner predict -m banner.rfc
 
 * only supports 2 labels at the moment
 
-* there is very limited checking
-
-* there are no tests yet...
+* there is very limited checking and not many unit tests...
