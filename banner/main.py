@@ -32,6 +32,7 @@ subcommands:
 			parser.print_help()
 			exit(1)
 		# launch the subcommand
+		print ("##########\n# BANNER #\n##########\nsubcommand: {}" .format(args.subcommand))
 		getattr(self, args.subcommand)()
 
 	"""
@@ -52,8 +53,6 @@ subcommands:
 		parser.add_argument('-m', '--matrix', required=True, type=lambda x: helpers.fileCheck(parser, x), help='The matrix from hulk smash')
 		parser.add_argument('-o', '--outFile', required=False, default='banner.rfc', help='Where to write the model to')
 		args = parser.parse_args(sys.argv[2:])
-		print ("##########\n# BANNER #\n##########")
-		print ("running train")
 		print('loading sketch matrix: {}' .format(args.matrix.name))
 		# load the data
 		data = np.loadtxt(fname = args.matrix, delimiter = ',', dtype = int)
@@ -70,8 +69,9 @@ subcommands:
 		print("\tno. training samples: {}\n\tno. testing samples: {}" .format(noTraining, noTesting))
 		# run the training
 		print("training...")
-		print("\ttraining accuracy: {}%" .format(bannerRFC.train()))
+		print("\ttraining accuracy: {}" .format(bannerRFC.train()))
 		# run the testing, print the stats and save the model
+		print("testing...")
 		bannerRFC.test(args.outFile)
 		print("saved model to disk: {}\nfinished.\n##########\n" .format(args.outFile))
 
@@ -85,8 +85,6 @@ subcommands:
 		parser.add_argument('-p', '--probability', required=False, default=0.90, type=float, help='The probability threshold for reporting classifications')
 		parser.add_argument('-v', '--verbose', required=False, default=False, action='store_true', help='Print all predictions and probability, even if threshold not met yet')
 		args = parser.parse_args(sys.argv[2:])
-		print ("##########\n# BANNER #\n##########")
-		print ("running predict")
 		print("loading model: {}" .format(args.model))
 		print("waiting for sketches...")
 		# load the model
@@ -113,7 +111,7 @@ subcommands:
 				print("finished.\n##########\n")
 				sys.exit(0)
 		# if stdin finished but we're still here, no prediction could be made with that probability threshold
-		print("could not make prediction within probability threshold!")
+		print("could not make prediction within probability threshold ({})!" .format(args.probability))
 		print("finished.")
 		sys.exit(0)
 
