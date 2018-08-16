@@ -52,6 +52,7 @@ subcommands:
 		# this checks the file and returns an open handle
 		parser.add_argument('-m', '--matrix', required=True, type=lambda x: helpers.fileCheck(parser, x), help='The matrix from hulk smash')
 		parser.add_argument('-o', '--outFile', required=False, default='banner.rfc', help='Where to write the model to')
+		parser.add_argument('-p', '--processors', required=False, default=1, help='Number of processors to use for training')
 		args = parser.parse_args(sys.argv[2:])
 		print('loading sketch matrix: {}' .format(args.matrix.name))
 		# load the data
@@ -62,7 +63,7 @@ subcommands:
 		labels = data[:, -1]
 		# create the RFC for banner
 		print("creating the banner RFC")
-		bannerRFC = rfc.bannerRFC(features, labels)
+		bannerRFC = rfc.bannerRFC(features, labels, args.processors)
 		# split the samples
 		print("splitting samples into training and testing sets")
 		noTraining, noTesting = bannerRFC.prepareData(0.20)
