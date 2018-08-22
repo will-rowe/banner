@@ -63,7 +63,7 @@ subcommands:
 		labels = data[:, -1]
 		# create the RFC for banner
 		print("creating the banner RFC")
-		bannerRFC = rfc.bannerRFC(features, labels, args.processors)
+		bannerRFC = rfc.bannerRFC(features, labels, int(args.processors))
 		# split the samples
 		print("splitting samples into training and testing sets")
 		noTraining, noTesting = bannerRFC.prepareData(0.20)
