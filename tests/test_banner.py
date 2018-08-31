@@ -11,7 +11,7 @@ class TestRCF:
 		# split to features and labels
 		features = data[:, :-1]
 		labels = data[:, -1]
-		testRFC = rfc.bannerRFC(features, labels, 1)
+		testRFC = rfc.bannerRFC(features, labels, 1, 100)
 		noTrain, noTest = testRFC.prepareData(0.20)
 		assert noTrain == 151
 		assert noTest == 37
