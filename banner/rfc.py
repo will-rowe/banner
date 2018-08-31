@@ -8,10 +8,11 @@ class bannerRFC(object):
 	"""
 	This is the Random Forest Class that will train, test and save the model for banner
 	"""
-	def __init__(self, features, labels, procs):
+	def __init__(self, features, labels, procs, estms):
 		self.features = features
 		self.labels = labels
 		self.processors = procs
+		self.estimators = estms
 
 	# splits the data into train and test sets, returns the number of samples in each
 	def prepareData(self, testProportion):
@@ -21,7 +22,7 @@ class bannerRFC(object):
 
 	# trains the RFC and returns the accuracy for the training
 	def train(self):
-		self.RFC=RandomForestClassifier(bootstrap=True, class_weight=None, n_estimators=1000, n_jobs=self.processors)
+		self.RFC=RandomForestClassifier(bootstrap=True, class_weight=None, n_estimators=self.estimators, n_jobs=self.processors)
 		self.RFC.fit(self.trainFeatures, self.trainLabels)
 		trainPredictions = self.RFC.predict(self.trainFeatures)
 		# 10-Fold Cross validation
