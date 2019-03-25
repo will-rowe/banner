@@ -1,7 +1,7 @@
 import numpy as np
 import pickle
 from sklearn.ensemble import RandomForestClassifier
-from sklearn.cross_validation import cross_val_score
+from sklearn.model_selection import cross_val_score
 from sklearn.metrics import accuracy_score, f1_score, precision_score, recall_score
 
 class bannerRFC(object):
